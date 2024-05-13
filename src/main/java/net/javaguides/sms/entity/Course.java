@@ -13,6 +13,7 @@ public class Course {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 	public String name;
+	public Long teacherId;
 	public String desc;
 	public int semester;
 	public String enrollKey;
