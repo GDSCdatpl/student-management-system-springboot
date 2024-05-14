@@ -51,6 +51,24 @@ public class CourseController {
 	}
 
 
+	@PostMapping("/courses/{id}")
+	public String updateCourse(@PathVariable Long id,
+								@ModelAttribute("student") Course course,
+								Model model) {
+
+		// get course from database by id
+		Course existingCourse = courseRepository.findById(id).get();
+		existingCourse.setId(id);
+		existingCourse.setName(course.getName());
+		existingCourse.setTeacherId(course.getTeacherId());
+		existingCourse.setDesc(course.getDesc());
+
+		// save updated course object
+		courseRepository.save(existingCourse);
+		return "redirect:/courses";
+	}
+
+
 	@GetMapping("/courses/new")
 	public String createCourseForm(Model model) {
 		Course course = new Course();
@@ -60,7 +78,7 @@ public class CourseController {
 
 	// handle delete course
 	@GetMapping("/courses/delete/{id}")
-	public String deleteCourse(Model model, Long id) {
+	public String deleteCourse(@PathVariable Long id) {
 		courseRepository.deleteById(id);
 		return "redirect:/courses";
 	}
