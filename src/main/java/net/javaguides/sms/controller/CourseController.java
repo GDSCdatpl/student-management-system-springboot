@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class CourseController {
 	@Autowired
@@ -25,10 +27,16 @@ public class CourseController {
 	}
 
 	@GetMapping("/courses/{id}")
-	private String getCourseById(Model model, Long id) {
-		model.addAttribute("course", courseRepository.findById(id).get());
-		return "course";
+	private String getCourseById(Model model, @PathVariable Long id) {
+		Optional<Course> optionalCourse = courseRepository.findById(id);
+		if (optionalCourse.isPresent()) {
+			model.addAttribute("course", optionalCourse.get());
+			return "course";
+		} else {
+			return "error";
+		}
 	}
+
 
 	@PostMapping("/courses/new")
 	public String saveCourse(@ModelAttribute("course") Course course) {
