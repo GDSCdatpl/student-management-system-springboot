@@ -60,7 +60,7 @@ public class CourseController {
 
 	// handle delete course
 	@GetMapping("/courses/delete/{id}")
-	public String deleteCourse(Model model, Long id) {
+	public String deleteCourse(Model model, @PathVariable Long id) {
 		courseRepository.deleteById(id);
 		return "redirect:/courses";
 	}

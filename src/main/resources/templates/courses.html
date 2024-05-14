@@ -49,6 +49,7 @@
 		<tr>
 			<th> Course Name</th>
 			<th> Course Semester</th>
+			<th> Actions</th>
 		</tr>
 		</thead>
 
@@ -57,9 +58,13 @@
 			<td th:text = "${course.name}"></td>
 			<td th:text = "${course.semester}"></td>
 			<td>
-				<button>
-					<a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-primary btn-sm"> Go to Course</a>
-				</button>
+				<a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-primary btn-sm"> 
+					Go to Course
+					</a>
+				
+				<a th:href = "@{/courses/delete/{id}(id=${course.id})}" class = "btn btn-danger btn-sm"> 
+					Delete
+                    </a>
 			</td>
 		</tr>
 		</tbody>
