@@ -17,6 +17,42 @@ public class Course {
 	public String desc;
 	public int semester;
 	public String enrollKey;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Long getTeacherId() {
+		return teacherId;
+	}
+	public void setTeacherId(Long teacherId) {
+		this.teacherId = teacherId;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	public int getSemester() {
+		return semester;
+	}
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+	public String getEnrollKey() {
+		return enrollKey;
+	}
+	public void setEnrollKey(String enrollKey) {
+		this.enrollKey = enrollKey;
+	}
 	
 	
 }

@@ -2,6 +2,8 @@ package net.javaguides.sms.controller;
 
 import net.javaguides.sms.entity.Course;
 import net.javaguides.sms.entity.Student;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CourseController {
+	@Autowired
 	private CourseRepository courseRepository;
 	
 	@GetMapping("/courses")
@@ -27,7 +30,7 @@ public class CourseController {
 		return "course";
 	}
 
-	@PostMapping("/courses")
+	@PostMapping("/courses/new")
 	public String saveCourse(@ModelAttribute("course") Course course) {
 		courseRepository.save(course);
 		return "redirect:/courses";
