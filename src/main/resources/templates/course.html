@@ -51,7 +51,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each = "course: ${courses}">
                         <td th:text = "${course.name}"></td>
                         <td th:text = "${course.desc}"></td>
                         <td th:text = "${course.teacherId}"></td>
@@ -63,7 +62,6 @@
                             <a th:href = "@{/courses/delete/{id}(id=${course.id})}"
                                 class = "btn btn-danger btn-sm"> Delete </a>
                         </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
