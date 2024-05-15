@@ -1,5 +1,8 @@
 package net.javaguides.sms.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,16 +22,55 @@ public class Student {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "is_disabled")
+	private boolean isDisabled;
+	
+	@Transient
+	private List<Course> courses = new ArrayList<Course>();
+	
 	public Student() {
 		
 	}
 	
-	public Student(String firstName, String lastName, String email) {
+	
+	public Student(Long id, String firstName, String lastName, String email, String password) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
+		this.courses = new ArrayList<Course>();
 	}
+
+	
+
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -52,5 +94,13 @@ public class Student {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isDisabled() {
+		return isDisabled;
+	}
+
+	public void setDisabled(boolean disabled) {
+		isDisabled = disabled;
 	}
 }

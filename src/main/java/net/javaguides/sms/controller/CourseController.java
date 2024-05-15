@@ -78,11 +78,7 @@ public class CourseController {
 
 	// handle delete course
 	@GetMapping("/courses/delete/{id}")
-<<<<<<< HEAD
-	public String deleteCourse(Model model, @PathVariable Long id) {
-=======
 	public String deleteCourse(@PathVariable Long id) {
->>>>>>> fc4def44aaff6733fdec6c0580e047bfbc175ee1
 		courseRepository.deleteById(id);
 		return "redirect:/courses";
 	}

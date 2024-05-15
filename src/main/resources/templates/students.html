@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Student Management System</title>
+<title>Learning Management System</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -50,6 +50,7 @@
 					<th> Student First Name</th>
 					<th> Student Last Name</th>
 					<th> Student Email </th>
+					<th> Student Courses</th>
 					<th> Actions </th>
 				</tr>
 			</thead>
@@ -60,11 +61,42 @@
 					<td th:text = "${student.lastName}"></td>
 					<td th:text = "${student.email}"></td>
 					<td>
+					
+						<table class = "table table-striped table-bordered">
+							<thead class = "table-dark">
+								<tr>
+									<th> Course Name</th>
+									<th> Actions </th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr th:each = "course: ${courses}">
+									<td th:text = "${course.name}"></td>
+									<td>
+										<a th:href = "@{/courses/{id}(id=${course.id})}"
+										 class = "btn btn-primary">Go to course</a>
+									
+										 
+										<a th:href = "@{/students/unenroll/{id}(id=${student.id})}"
+										 class = "btn btn-danger">Unenroll</a>
+										 
+									</td>
+								</tr>
+							</tbody>
+						
+						</table>
+					
+					</td>
+					<td>
 						<a th:href = "@{/students/edit/{id}(id=${student.id})}"
 						 class = "btn btn-primary">Update</a>
 						
-						<a th:href = "@{/students/{id}(id=${student.id})}"
-						 class = "btn btn-danger">Delete</a>
+						<a th:href = "@{/students/disable/{id}(id=${student.id})}"
+						 class = "btn btn-danger">Disable</a>
+						 
+						<a th:href = "@{/students/enroll/{id}(id=${student.id})}"
+						 class = "btn btn-danger">Enroll</a>
 						 
 					</td>
 				</tr>

@@ -39,67 +39,35 @@
 	<div class = "container">
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 class = "text-center"> Create New Student </h1>
+				<h1 class = "text-center"> Enroll Student </h1>
 				<div class = "card-body">
-					<form th:action="@{/students}" th:object = "${student}" method="POST">
+					<form th:action="@{/students/enroll/{id} (id=${student.id})}" th:object = "${enrollment}" method="POST">
 						<div class ="form-group">
-							<label> Student First Name </label>
+							<label> Student ID </label>
 							<input
 							type = "text"
-							name = "firstName"
-							th:field = "*{firstName}"
+							name = "studentId"
+							th:field = "*{studentId}"
 							class = "form-control"
-							placeholder="Enter Student First Name" 
+							placeholder="Enter Student ID" 
+							value="${student.id}"
 							/>
 						</div>
 						
 						<div class ="form-group">
-							<label> Student Last Name </label>
+							<label> Course ID </label>
 							<input
 							type = "text"
-							name = "lastName"
-							th:field = "*{lastName}"
+							name = "courseId"
+							th:field = "*{courseId}"
 							class = "form-control"
-							placeholder="Enter Student Last Name" 
-							/>
-						</div>
-						
-						<div class ="form-group">
-							<label> Student Email </label>
-							<input
-							type = "text"
-							name = "email"
-							th:field = "*{email}"
-							class = "form-control"
-							placeholder="Enter Student Email" 
-							/>
-						</div>
-
-						<div class ="form-group">
-							<label> Student Password </label>
-							<input
-									type = "text"
-									name = "password"
-									th:field = "*{password}"
-									class = "form-control"
-									placeholder="Enter Student Password"
-							/>
-						</div>
-
-						<div class ="form-group">
-							<label> Is Student Disabled? </label>
-							<input
-									type = "checkbox"
-									name = "password"
-									th:field = "*{password}"
-									class = "form-control"
-									value = "true"
+							placeholder="Enter Course ID" 
 							/>
 						</div>
 						
 						<div class = "box-footer">
 							<button type="submit" class = "btn btn-primary">
-								Submit
+								Enroll Student
 							</button>
 						</div>
 					</form>
