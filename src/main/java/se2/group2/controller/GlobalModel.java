@@ -1,4 +1,4 @@
-package net.javaguides.sms.controller;
+package se2.group2.controller;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

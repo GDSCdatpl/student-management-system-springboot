@@ -1,15 +1,14 @@
-package net.javaguides.sms.controller;
+package se2.group2.controller;
 
-import net.javaguides.sms.entity.Course;
-import net.javaguides.sms.entity.Student;
+import se2.group2.entity.Course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import net.javaguides.sms.repository.CourseRepository;
-import net.javaguides.sms.repository.EnrollmentRepository;
+import se2.group2.repository.CourseRepository;
+import se2.group2.repository.EnrollmentRepository;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;

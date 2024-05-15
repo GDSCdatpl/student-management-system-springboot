@@ -1,4 +1,4 @@
-package net.javaguides.sms.entity;
+package se2.group2.entity;
 
 import java.util.ArrayList;
 import java.util.List;

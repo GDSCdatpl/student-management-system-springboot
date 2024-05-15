@@ -1,7 +1,7 @@
-package net.javaguides.sms.controller;
+package se2.group2.controller;
 
-import net.javaguides.sms.entity.Account;
-import net.javaguides.sms.repository.AccountRepository;
+import se2.group2.entity.Account;
+import se2.group2.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,11 +1,10 @@
-package net.javaguides.sms.repository;
+package se2.group2.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import net.javaguides.sms.entity.Enrollment;
-import net.javaguides.sms.entity.Student;
+import se2.group2.entity.Enrollment;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 	List<Enrollment> findByStudentId(Long studentId);

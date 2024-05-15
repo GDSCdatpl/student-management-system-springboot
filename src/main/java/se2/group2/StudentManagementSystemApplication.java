@@ -1,19 +1,20 @@
-package net.javaguides.sms;
+package se2.group2;
 
-import net.javaguides.sms.entity.Account;
-import net.javaguides.sms.repository.AccountRepository;
-import net.javaguides.sms.entity.Course;
-import net.javaguides.sms.entity.Enrollment;
-import net.javaguides.sms.entity.Student;
-import net.javaguides.sms.entity.Teacher;
-import net.javaguides.sms.repository.CourseRepository;
-import net.javaguides.sms.repository.EnrollmentRepository;
-import net.javaguides.sms.repository.StudentRepository;
-import net.javaguides.sms.repository.TeacherRepository;
+import se2.group2.entity.Account;
+import se2.group2.repository.AccountRepository;
+import se2.group2.entity.Course;
+import se2.group2.entity.Enrollment;
+import se2.group2.entity.Student;
+import se2.group2.entity.Teacher;
+import se2.group2.repository.CourseRepository;
+import se2.group2.repository.EnrollmentRepository;
+import se2.group2.repository.StudentRepository;
+import se2.group2.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
 public class StudentManagementSystemApplication implements CommandLineRunner {
 	@Autowired
