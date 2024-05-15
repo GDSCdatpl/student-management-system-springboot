@@ -9,6 +9,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+    public Long studentId;
     public String username;
     public String password;
 
@@ -17,15 +18,33 @@ public class Account {
 
     }
 
-    public Account(Long id, String username, String password) {
-        super();
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
+
+    public Account(Long id, Long studentId, String username, String password) {
+		super();
+		this.id = id;
+		this.studentId = studentId;
+		this.username = username;
+		this.password = password;
+	}
+
+	public Long getStudentId() {
+		return studentId;
+	}
 
 
-    public Long getId() {
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+
+	public Long getId() {
         return id;
     }
 

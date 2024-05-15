@@ -31,12 +31,13 @@ public class AccountController {
 
         for (Account acc : listAccount) {
             if (account.getUsername().equals("student") && account.getPassword().equals(acc.getPassword())) {
-                return "redirect:/student_courses";
+            	GlobalModel.INSTANCE.put("sid", acc.studentId);
+                return "redirect:/student/courses";
             }
 
             if ((account.getUsername().equals("teacher") || account.getUsername().equals("admin"))
                     && account.getPassword().equals(acc.getPassword())) {
-                return "redirect:/students";
+                return "redirect:/courses";
             }
         }
         return "redirect:/login";

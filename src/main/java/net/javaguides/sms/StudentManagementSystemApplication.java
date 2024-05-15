@@ -45,6 +45,7 @@ public class StudentManagementSystemApplication implements CommandLineRunner {
 
         Account studentAccount = new Account();
         studentAccount.setUsername("student");
+        studentAccount.setStudentId(1L);
         studentAccount.setPassword("student");
 
         Account teacherAccount = new Account();
