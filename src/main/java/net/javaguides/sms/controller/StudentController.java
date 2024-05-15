@@ -105,6 +105,17 @@ public class StudentController {
         return "enroll_student";
     }
     
+    @GetMapping("/students/enroll/course/{cid}")
+    public String studentEnrollCourse(@PathVariable Long cid, Model model) {
+        Long sid = (Long) GlobalModel.INSTANCE.get("sid");
+        Enrollment enrollment = new Enrollment(
+        			sid,
+        			cid
+        		);
+        enrollmentRepository.save(enrollment);
+        return "redirect:/student/courses";
+    }
+    
     @PostMapping("/students/enroll")
     public String enrollStudent(@ModelAttribute("enrollment") Enrollment enrollment) {
     	enrollmentRepository.save(enrollment);

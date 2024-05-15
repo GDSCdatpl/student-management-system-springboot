@@ -9,4 +9,6 @@ import net.javaguides.sms.entity.Student;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 	List<Enrollment> findByStudentId(Long studentId);
+	
+	List<Enrollment> findByStudentIdAndCourseId(Long studentId, Long courseId);
 }
