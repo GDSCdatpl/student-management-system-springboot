@@ -54,7 +54,7 @@ public class TeacherController {
         existingStudent.setName(teacher.getName());
         existingStudent.setUsername(teacher.getUsername());
         existingStudent.setPassword(teacher.getPassword());
-        existingStudent.setDisabled(teacher.isDisabled());
+        existingStudent.setIsDisabled(teacher.getIsDisabled());
 
 
         // save updated teacher object
@@ -63,12 +63,12 @@ public class TeacherController {
     }
 
 
-    @GetMapping("/teacher/disable/{id}")
+    @GetMapping("/teachers/disable/{id}")
     public String disableTeacher(@PathVariable Long id) {
         final Optional<Teacher> teacherOptional = teacherRepository.findById(id);
         if (teacherOptional.isPresent()) {
             final Teacher teacher = teacherOptional.get();
-            teacher.setDisabled(true);
+            teacher.setIsDisabled(true);
             teacherRepository.save(teacher);
         }
         return "redirect:/teachers";

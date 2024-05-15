@@ -26,7 +26,7 @@ public class Student {
 	private String password;
 
 	@Column(name = "is_disabled")
-	private boolean isDisabled;
+	private boolean isDisabled = false;
 	
 	@Transient
 	private List<Course> courses = new ArrayList<Course>();
@@ -36,17 +36,22 @@ public class Student {
 	}
 	
 	
-	public Student(Long id, String firstName, String lastName, String email, String password) {
+
+
+	public Student(Long id, String firstName, String lastName, String email, String password, boolean isDisabled) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.isDisabled = isDisabled;
 		this.courses = new ArrayList<Course>();
 	}
 
-	
+
+
+
 
 
 	public List<Course> getCourses() {
@@ -96,11 +101,11 @@ public class Student {
 		this.email = email;
 	}
 
-	public boolean isDisabled() {
+	public boolean getIsDisabled() {
 		return isDisabled;
 	}
 
-	public void setDisabled(boolean disabled) {
+	public void setIsDisabled(boolean disabled) {
 		isDisabled = disabled;
 	}
 }

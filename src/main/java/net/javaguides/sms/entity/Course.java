@@ -17,6 +17,23 @@ public class Course {
 	public String desc;
 	public int semester;
 	public String enrollKey;
+	
+	
+	
+	public Course() {
+		super();
+	}
+
+	public Course(Long id, String name, Long teacherId, String desc, int semester, String enrollKey) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.teacherId = teacherId;
+		this.desc = desc;
+		this.semester = semester;
+		this.enrollKey = enrollKey;
+	}
+	
 	public Long getId() {
 		return id;
 	}

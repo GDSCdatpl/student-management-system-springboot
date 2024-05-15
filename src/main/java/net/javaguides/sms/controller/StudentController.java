@@ -77,6 +77,8 @@ public class StudentController {
         existingStudent.setFirstName(student.getFirstName());
         existingStudent.setLastName(student.getLastName());
         existingStudent.setEmail(student.getEmail());
+        existingStudent.setIsDisabled(student.getIsDisabled());
+
 
         // save updated student object
         studentRepository.save(existingStudent);
@@ -90,7 +92,7 @@ public class StudentController {
         final Optional<Student> studentOptional = studentRepository.findById(id);
         if (studentOptional.isPresent()) {
             final Student student = studentOptional.get();
-            student.setDisabled(true);
+            student.setIsDisabled(true);
             studentRepository.save(student);
         }
         return "redirect:/students";
@@ -103,10 +105,19 @@ public class StudentController {
         return "enroll_student";
     }
     
-    @PostMapping("/students/enroll/{id}")
-    public String enrollStudent(@PathVariable Long id, 
-    		 					@ModelAttribute("enrollment") Enrollment enrollment) {
+    @PostMapping("/students/enroll")
+    public String enrollStudent(@ModelAttribute("enrollment") Enrollment enrollment) {
     	enrollmentRepository.save(enrollment);
-        return "enroll_student";
+        return "redirect:/students";
+    }
+    
+    @GetMapping("/students/kick/{sid}/{cid}")
+    public String enrollStudentForm(@PathVariable Long sid, @PathVariable Long cid, Model model) {
+    	List<Enrollment> enrollments = enrollmentRepository.findByStudentId(sid);
+    	for (Enrollment enrollment : enrollments) {
+    		if (enrollment.courseId == cid) 
+    			enrollmentRepository.delete(enrollment);
+    	}
+        return "redirect:/students";
     }
 }
