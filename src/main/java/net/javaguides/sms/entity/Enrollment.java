@@ -1,6 +1,8 @@
 package net.javaguides.sms.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,6 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "enrollments")
 public class Enrollment {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 	public Long studentId;
 	public Long courseId;

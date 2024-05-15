@@ -21,15 +21,6 @@
 	<!-- Navbar links -->
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/students}">Student Management</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/teachers}">Teacher Management</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/courses}">Course Management</a>
-			</li>
 		</ul>
 	</div>
 </nav>
@@ -39,17 +30,13 @@
 		<h1> List Courses </h1>
 	</div>
 
-	<div class = "row">
-		<div class = "col-lg-3">
-			<a th:href = "@{/courses/new}" class = "btn btn-primary btn-sm mb-3"> Add Course</a>
-		</div>
-	</div>
 	<table class = "table table-striped table-bordered">
 		<thead class = "table-dark">
 		<tr>
 			<th> Course ID</th>
 			<th> Course Name</th>
 			<th> Course Semester</th>
+			<th> Enrolled</th>
 			<th> Actions</th>
 
 		</tr>
@@ -60,14 +47,11 @@
 			<td th:text = "${course.id}"></td>
 			<td th:text = "${course.name}"></td>
 			<td th:text = "${course.semester}"></td>
+			<td th:text = "${course.enrolled}"></td>
 			<td>
-				<a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-primary btn-sm"> 
+				<a th:href="@{/student/courses/{id}(id=${course.id})}" class="btn btn-primary btn-sm"> 
 					Go to Course
 					</a>
-				
-				<a th:href = "@{/courses/delete/{id}(id=${course.id})}" class = "btn btn-danger btn-sm"> 
-					Delete
-                    </a>
 			</td>
 		</tr>
 		</tbody>

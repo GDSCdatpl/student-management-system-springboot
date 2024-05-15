@@ -9,16 +9,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import net.javaguides.sms.repository.CourseRepository;
+import net.javaguides.sms.repository.EnrollmentRepository;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class CourseController {
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private EnrollmentRepository enrollmentRepository;
 	
 	@GetMapping("/courses")
 	private String getCourses(Model model) {
@@ -36,6 +41,41 @@ public class CourseController {
 			return "error";
 		}
 	}
+	
+	@GetMapping("/student/courses")
+	private String getStudentCourses(Model model) {
+		GlobalModel.INSTANCE.put("sid", 1L);
+		List<Course> courses = courseRepository.findAll();
+		 Long sid = (Long) GlobalModel.INSTANCE.get("sid");
+		for (Course course : courses) {
+			if (!enrollmentRepository.findByStudentIdAndCourseId(sid, course.id)
+					.isEmpty())
+				course.enrolled = true;
+			else
+				course.enrolled = false;
+		}
+		model.addAttribute("courses", courseRepository.findAll());
+		return "student_courses";
+	}
+	
+	@GetMapping("/student/courses/{id}")
+	private String getStudentCourseById(Model model, @PathVariable Long id) {
+		Optional<Course> optionalCourse = courseRepository.findById(id);
+		if (optionalCourse.isPresent()) {
+			Course course = optionalCourse.get();
+			Long sid = (Long) GlobalModel.INSTANCE.get("sid");
+			if (!enrollmentRepository.findByStudentIdAndCourseId(sid, course.id)
+					.isEmpty())
+				course.enrolled = true;
+			else
+				course.enrolled = false;
+			model.addAttribute("course", course);
+			return "student_course";
+		} else {
+			return "error";
+		}
+	}
+
 
 
 	@PostMapping("/courses/new")

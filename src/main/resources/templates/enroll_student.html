@@ -41,16 +41,15 @@
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class = "text-center"> Enroll Student </h1>
 				<div class = "card-body">
-					<form th:action="@{/students/enroll/{id} (id=${student.id})}" th:object = "${enrollment}" method="POST">
+					<form th:action="@{/students/enroll}" th:object = "${enrollment}" method="POST">
 						<div class ="form-group">
 							<label> Student ID </label>
 							<input
-							type = "text"
-							name = "studentId"
-							th:field = "*{studentId}"
-							class = "form-control"
-							placeholder="Enter Student ID" 
-							value="${student.id}"
+								type = "text"
+								name = "studentId"
+								th:field = "*{studentId}"
+								class = "form-control"
+								placeholder="Enter Student ID" 
 							/>
 						</div>
 						

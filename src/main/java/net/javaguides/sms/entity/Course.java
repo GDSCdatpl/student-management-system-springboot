@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "courses")
@@ -17,6 +18,25 @@ public class Course {
 	public String desc;
 	public int semester;
 	public String enrollKey;
+	@Transient
+	public boolean enrolled = false;
+	
+	
+	
+	public Course() {
+		super();
+	}
+
+	public Course(Long id, String name, Long teacherId, String desc, int semester, String enrollKey) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.teacherId = teacherId;
+		this.desc = desc;
+		this.semester = semester;
+		this.enrollKey = enrollKey;
+	}
+	
 	public Long getId() {
 		return id;
 	}

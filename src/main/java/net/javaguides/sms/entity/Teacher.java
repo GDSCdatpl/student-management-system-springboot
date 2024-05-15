@@ -62,11 +62,11 @@ public class Teacher {
         this.password = password;
     }
 
-    public boolean isDisabled() {
+    public boolean getIsDisabled() {
         return isDisabled;
     }
 
-    public void setDisabled(boolean disabled) {
+    public void setIsDisabled(boolean disabled) {
         isDisabled = disabled;
     }
 }
